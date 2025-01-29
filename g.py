@@ -84,7 +84,7 @@ async def start_asyncio_loop():
         await asyncio.sleep(REQUEST_INTERVAL)
 
 async def run_attack_command_async(target_ip, target_port, duration):
-    process = await asyncio.create_subprocess_shell(f"./RAGNAROK {target_ip} {target_port} {duration} ")
+    process = await asyncio.create_subprocess_shell(f"./sharp {target_ip} {target_port} {duration} ")
     await process.communicate()
 
 def is_user_admin(user_id, chat_id):
@@ -140,7 +140,7 @@ def approve_or_disapprove_user(message):
 
     bot.send_message(chat_id, msg_text, parse_mode='Markdown')
     bot.send_message(CHANNEL_ID, msg_text, parse_mode='Markdown')
-@bot.message_handler(commands=['Attack'])
+@bot.message_handler(commands=['attack'])
 def attack_command(message):
     user_id = message.from_user.id
     chat_id = message.chat.id
